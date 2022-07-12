@@ -1,23 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
-import unsplashApi from '../unsplash.js';
+import feed from './actions/feed';
+import auth from './actions/auth';
+import user from './actions/user';
 
-let initialState = [];
-
-export default async function getFeedStore() {
-  const result = await unsplashApi.photos.list();
-
-  initialState = result.response.results;
-
-  const feedSlice = createSlice({
-    name: `feed`,
-    initialState,
-    reducers: {},
-  });
-
-  return configureStore({
-    reducer: {
-      feed: feedSlice.reducer,
-    }
-  });
-}
+export default configureStore({
+  reducer: {
+    feed: feed.reducer,
+    auth: auth.reducer,
+    user: user.reducer,
+  }
+});

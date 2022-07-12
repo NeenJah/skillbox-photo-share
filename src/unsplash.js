@@ -1,7 +1,11 @@
-import { createApi } from 'unsplash-js';
+import Unsplash from 'unsplash-js';
+import { ACCESS_KEY, SECRET } from './constants.js';
+import { getCallbackUrl } from './utils.js';
 
-const unsplashApi = createApi({
-  accessKey: `_BuQyytLcr2DdRU5sc8-qC2DOHmQBGJ1j3coaI7Gb-o`,
+const unsplashApi = new Unsplash({
+  accessKey: ACCESS_KEY,
+  secret: SECRET,
+  callbackUrl: getCallbackUrl(),
 });
 
 export default unsplashApi;

@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import App from './components/App.js';
-import getFeedStore from './store/store.js';
+import store from './store/store.js';
+import './css/styles.css';
 
 const rootEl = document.querySelector(`.js-root`);
 
-getFeedStore().then(store => {
-  ReactDOM.render(
-    <Provider store={store}>
+ReactDOM.render(
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
-    </Provider>,
-    rootEl
-  );
-}).catch(err => console.log(`Ошибка приложения: ${err}`));
+    </BrowserRouter>
+  </Provider>,
+  rootEl
+);
